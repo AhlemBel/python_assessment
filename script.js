@@ -86,20 +86,26 @@ function submitSolution() {
     };
 
     fetch("https://script.google.com/macros/s/AKfycbxKCCejxpP1XeUbmOBJEW0P9a_Ma__YSa_9MhVQgpzrQ7UfkqhGAVXSe9Iw7K_I1w4f/exec", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(data)
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+        firstName: document.getElementById("firstName").value.trim(),
+        lastName: document.getElementById("lastName").value.trim(),
+        group: document.getElementById("group").value.trim(),
+        solution: document.getElementById("solution").value.trim()
     })
-    .then(response => response.text())  // Convert response to text
-    .then(text => {
-        console.log("Response from server:", text);
+})
+.then(response => response.json())
+.then(data => {
+    if (data.error) {
+        alert("Error: " + data.error);
+    } else {
         alert("Solution submitted successfully!");
-    })
-    .catch(error => alert("Error submitting solution."));
-}
-
-// Attach event listener
-submitButton.addEventListener("click", submitSolution);
-
+    }
+})
+.catch(error => {
+    console.error("Fetch error:", error);
+    alert("Error submitting solution.");
+});
