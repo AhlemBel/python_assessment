@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Assessment</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="left-column">
+            <h2>Student Details</h2>
+            <input type="text" id="firstName" placeholder="First Name" required>
+            <input type="text" id="lastName" placeholder="Last Name" required>
+            <input type="text" id="subscriptionNumber" placeholder="Subscription Number" required>
+            <input type="text" id="group" placeholder="Group" required>
+            <button id="go">Go</button>
+        </div>
+        
+        <div class="right-column">
+            <h2>Python Exercise</h2>
+            <p id="exercise">Enter your details and click "Go" to generate an exercise.</p>
+            <textarea id="solution" placeholder="Write your solution here..." disabled></textarea>
+            <button id="submit" disabled>Submit</button>
+            <p id="timer">Time left: 15:00</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
